@@ -1,25 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import React from "react";
+import { Navbar } from "react-bootstrap";
+import NavbarCustom from "./components/Navbar/Navbar";
+import MainRoutes from "./MainRoutes";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Router } from "react-router-dom";
+import ContactContextProvider from "./Context/Context";
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <ContactContextProvider>
+        <NavbarCustom />
+        <MainRoutes/>
+      </ContactContextProvider>
+    </>
   );
-}
+};
 
 export default App;
