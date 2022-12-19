@@ -36,10 +36,10 @@ const ContactContextProvider = ({ children }) => {
     });
   }
 
-//   async function changeContact(id, editObj) {
-//     await axios.patch(`${API}/${id}`, editObj);
-//     getContacts();
-//   }
+  async function changeContact(id, editObj) {
+    await axios.patch(`${API}/${id}`, editObj);
+    getContacts();
+  }
   const deleteContacts = async (id) => {
     await axios.delete(`${API}/${id}`);
     getContacts();
