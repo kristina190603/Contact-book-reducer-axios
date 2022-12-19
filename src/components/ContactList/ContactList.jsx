@@ -3,7 +3,7 @@ import { Card } from 'react-bootstrap';
 import { contactContext } from '../../Context/Context';
 
 const ContactList = () => {
-    const { contacts, getContacts, deleteContacts } = useContext(contactContext);
+    const { contacts, getContacts, deleteContacts, editContact } = useContext(contactContext);
   console.log(contacts)
   
   useEffect(()=> {
@@ -17,7 +17,7 @@ const ContactList = () => {
                 <li>{item.lastName}</li>
                 <li>{item.phone}</li>
 
-                <button>EDIT</button>
+                <button onClick={()=>editContact(item.id)}>EDIT</button>
                 <button onClick={()=>deleteContacts(item.id)}>DELETE</button>
                </ul>
             ))}

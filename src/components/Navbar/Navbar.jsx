@@ -14,7 +14,7 @@ function NavbarCustom() {
 
             <Link to="home"  style={{ color: "black", marginRight: "45px", marginTop: "10px" , textDecoration:"none"}}>Home</Link>
             <Link to="add-user"  style={{ color: "black", marginRight: "45px", marginTop: "10px", textDecoration:"none" }}>Add User</Link>
-            <Link to="user-list"  style={{ color: "black", marginRight: "30px", marginTop: "10px", textDecoration:"none" }}>User List</Link>
+            <Link to="user-list/:id"  style={{ color: "black", marginRight: "30px", marginTop: "10px", textDecoration:"none" }}>User List</Link>
 
           </Nav>
         </Navbar.Collapse>

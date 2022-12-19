@@ -12,13 +12,16 @@ const INIT_STATE = {
 
 function reducer(state = INIT_STATE, action) {
   switch (action.type) {
-    case "GET_CONTACTS":
-      return { ...state, contacts: action.payload };
-    default:
+      case "GET_CONTACTS":
+        return { ...state, contacts: action.payload };
+        case "GET_ONE_CONTACT":
+            return{...state, contacts:action.payload}
+      default:
       return state;
   }
 }
 
+// ! POST
 const ContactContextProvider = ({ children }) => {
   const API = "http://localhost:8000/contacts";
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
@@ -27,7 +30,7 @@ const ContactContextProvider = ({ children }) => {
     await axios.post(API, newContact);
     getContacts();
   }
-
+// ! GET
   async function getContacts() {
     const { data } = await axios.get(API);
     dispatch({
@@ -35,11 +38,19 @@ const ContactContextProvider = ({ children }) => {
       payload: data,
     });
   }
+// ! CHANGE
+async function getOneContact(id) {
+    const { data } = await axios.get(`${API}/${id}`);
+    dispatch({
+        type: "GET_ONE_CONTACT",
+        payload: data,
+    })
+}
 
-  async function changeContact(id, editObj) {
-    await axios.patch(`${API}/${id}`, editObj);
-    getContacts();
-  }
+async function editContact(id, newObj) {
+    await axios.patch(`${API}/${id}`, newObj)
+}
+//   ! DELETE
   const deleteContacts = async (id) => {
     await axios.delete(`${API}/${id}`);
     getContacts();
@@ -50,7 +61,8 @@ const ContactContextProvider = ({ children }) => {
     getContacts,
     deleteContacts,
     contacts: state.contacts,
-    changeContact,
+    getOneContact,
+    editContact,
   };
   return (
     <contactContext.Provider value={values}>{children}</contactContext.Provider>

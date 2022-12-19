@@ -5,6 +5,12 @@
       "lastName": "Tigay",
       "phone": "275285873578",
       "id": 1
+    },
+    {
+      "name": "Albina",
+      "lastName": "Narynbekova",
+      "phone": "996123456",
+      "id": 2
     }
   ]
 }

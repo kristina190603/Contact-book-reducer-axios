@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import Button from 'react-bootstrap/Button';
+import { contactContext } from "../../Context/Context";
 
 const EditContacts = () => {
-const {oneContact, changeContact} = useContext(contactContext)
-
+const {oneContact, getOneContact,editContact} = useContext(contactContext)
+console.log(contactContext)
 const [newEditContact, setNewEditContact] = useState(oneContact)
 useEffect(()=> {
   setNewEditContact(oneContact)
@@ -12,24 +13,24 @@ useEffect(()=> {
   return (
     <div style={{marginLeft: "30%", marginTop: "2%"}}>
       <input 
-        onChange={()=>changeContact(item.name)}
+        onChange={(item)=>getOneContact(item.name)}
         type="text"
         placeholder="Name"
-        value={name}
+        name="name"
       />
       <input style={{marginLeft: "20px"}}
-        onChange={() =>changeContact(item.lastName) }
+        onChange={(item) =>getOneContact(item.lastName) }
         type="text"
         placeholder="lastName"
-        value={lastName}
+        name="lastName"
       />
       <input style={{marginLeft: "19px"}}
-        onChange={() => changeContact(item.phone)}
+        onChange={(item) => getOneContact(item.phone)}
         type="text"
         placeholder="Number"
-        value={phone}
+        name="phone"
       />
-      <Button style={{marginLeft: "2%"}} variant="success" onClick={changeContact}>Save</Button>{' '}
+      <Button style={{marginLeft: "2%"}} variant="success" onClick={editContact}>Save</Button>{' '}
     </div>
   );
 };
