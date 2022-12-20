@@ -11,7 +11,7 @@ const MainRoutes = () => {
             <Route path='/home' element={<Home/>} />
             <Route path='/add-user' element={<AddContact/>} />
             {/* <Route path='/user-list' element={<ContactList/>} /> */}
-            <Route path='/user-list/:id' element={
+            <Route path='/user-list' element={
             <>
             <EditContacts/>
             <ContactList/>

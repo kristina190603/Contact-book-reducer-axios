@@ -15,7 +15,7 @@ function reducer(state = INIT_STATE, action) {
       case "GET_CONTACTS":
         return { ...state, contacts: action.payload };
         case "GET_ONE_CONTACT":
-            return{...state, contacts:action.payload}
+            return{...state, oneContact: action.payload}
       default:
       return state;
   }
@@ -49,6 +49,7 @@ async function getOneContact(id) {
 
 async function editContact(id, newObj) {
     await axios.patch(`${API}/${id}`, newObj)
+    getContacts()
 }
 //   ! DELETE
   const deleteContacts = async (id) => {
@@ -61,6 +62,7 @@ async function editContact(id, newObj) {
     getContacts,
     deleteContacts,
     contacts: state.contacts,
+    oneContact: state.oneContact,
     getOneContact,
     editContact,
   };
